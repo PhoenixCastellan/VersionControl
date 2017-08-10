@@ -4,21 +4,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WeatherApi.Service;
 
 namespace WeatherApi.Controllers
 {
     public class ValuesController : ApiController
     {
+        private IStudentApplication _studentApplication;
+
+        public ValuesController(IStudentApplication application)
+        {
+            _studentApplication = application;
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _studentApplication.Get();
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public string Get(string id)
         {
-            return "value";
+            return string.Join(",", _studentApplication.Get(id));
         }
 
         // POST api/values

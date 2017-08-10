@@ -13,6 +13,7 @@ namespace WeatherApi
     {
         protected void Application_Start()
         {
+            AutoFacConfig.Config(GlobalConfiguration.Configuration);
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
